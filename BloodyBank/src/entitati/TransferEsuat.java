@@ -23,7 +23,7 @@ public class TransferEsuat extends Transfer{
 	
 	public TransferEsuat() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public TransferEsuat(Donator donatorResp, List<Angajat> angajatResp,
 			String explicatie) {

@@ -4,43 +4,59 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script language="javascript" type="text/javascript" src="datetimepicker.js">
+
+//Date Time Picker script- by TengYong Ng of http://www.rainforestnet.com
+//Script featured on JavaScript Kit (http://www.javascriptkit.com)
+//For this script, visit http://www.javascriptkit.com 
+
+</script>
 <title>Donator</title>
 <link href="${pageContext.request.contextPath}/Stiluri.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<form method="post" action="/BbServlet">
+<form method="post" action="BbServlet">
 <div class="langa">
 
 
 <h1> Donator</h1>
 <br>
 <table>
-  <tr>
-    <td><label>Nume &#351;i prenume:</label></td>
-    <td><input type="text" name="nume" ></td>
-  </tr>  
+  
+  	<tr> <td><label>CNP: </label></td>
+    <td><input type="text" name="CNP"></td></tr>
+    
+    <tr><td><label>Nume &#351;i prenume:</label></td>
+    <td><input type="text" name="nume" ></td></tr>  
+    
     <tr><td><label>Grup&#259;:</label></td> 
     <td><input type="text" name="grupa"></td> </tr>
-  <tr>
-    <td><label>CNP: </label></td>
-    <td><input type="text" name="CNP"></td></tr>
+  
    <tr> <td><label>Telefon:</label> </td>
     <td><input type="text" name="telefon"></td></tr>
+    
    <tr> <td><label>Adresa: </label></td>
     <td><input type="text" name="adresa"></td></tr>
+    
+    <tr> <td><label>Email:</label></td>
+    <td><input type="text" name="email"></td></tr>
+    
     <tr> <td><label>Centrul ales:</label></td>
-    <td><optgroup label="centre"></optgroup></td></tr>
-    <tr><td><label>Avertizare:</label> </td>
-    <td><input type="text" name="avertizare"></td>
-  </tr>
+    <td> <select id="Centre" name="Centre"> </select></td></tr>
+    
+    <tr><td><label>Alege&#355;i data &#351;i ora:</label></td>
+    <td><input id="demo3" type="text" size="18"><a href="javascript:NewCal('demo3','ddmmmyyyy',true,24)"><img src="cal.gif" width="16" height="16" border="0" alt="Alege o data"></a></td></tr>
+	
+	<tr><td><label>Avertizare:</label> </td>
+    <td><input type="text" name="avertizare"></td></tr>
     
 </table>
 
 <br><br>
 <button type="submit" class="button" name="salvare">Salveaz&#259;</button>&ensp;
-<a href="PaginaPrincipala.jsp"><button type="button" class="button" name="anulare">Anuleaz&#259;</button></a>
+<a href="index.jsp"><button type="button" class="button" name="anulare">Anuleaz&#259;</button></a>
 
 
 

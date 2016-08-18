@@ -4,10 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Angajat</title>
 <link href="/Stiluri.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+<form class="langa" action = "BbServlet">
+		
+	Don't crash
+</form>
 </body>
 </html>

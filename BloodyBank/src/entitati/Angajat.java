@@ -2,10 +2,14 @@ package entitati;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Angajat {
@@ -16,14 +20,32 @@ public class Angajat {
 	private String telefon;
 	private String adresa;
 	private String email;
+	 @Temporal(TemporalType.TIMESTAMP)
 	private Date data_angajare;
 	private String functie;
 	@ManyToOne
 	private Centru centru;	
+	@OneToOne(cascade=CascadeType.PERSIST)
+	private Utilizator utilizator;
 	
 	
+	
+	public Angajat(String nume, String cNP, String telefon, String adresa,
+			String email, Date data_angajare, String functie, Centru centru,
+			Utilizator utilizator) {
+		super();
+		this.nume = nume;
+		CNP = cNP;
+		this.telefon = telefon;
+		this.adresa = adresa;
+		this.email = email;
+		this.data_angajare = data_angajare;
+		this.functie = functie;
+		this.centru = centru;
+		this.utilizator = utilizator;
+	}
 	public Angajat(String nume, String cNP, String telefon, String Adresa,
-			String Email, Date data_angajare, Centru centru) {
+			String Email, Date data_angajare, String functie, Utilizator utilizator) {
 		super();
 		this.nume = nume;
 		CNP = cNP;
@@ -31,11 +53,12 @@ public class Angajat {
 		adresa = Adresa;
 		email = Email;
 		this.data_angajare = data_angajare;
-		this.centru = centru;
+		this.functie=functie;
+		this.utilizator=utilizator;
 	}
 	public Angajat() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public String getNume() {
 		return nume;

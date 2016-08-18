@@ -12,5 +12,6 @@
 		<class>entitati.Transfer</class>
 		<class>entitati.TransferEsuat</class>
 		<class>entitati.TransferGrupa</class>
+		<class>entitati.Utilizator</class>
 	</persistence-unit>
 </persistence>

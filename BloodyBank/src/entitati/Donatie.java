@@ -26,6 +26,8 @@ public class Donatie {
 	private String tip;
 	@Column
 	private Date dataPreluare;
+	@Column 
+	private String status;
 	
 	
 	
@@ -40,7 +42,7 @@ public class Donatie {
 	}
 	public Donatie() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public Donator getDonator() {
 		return donator;
@@ -78,6 +80,18 @@ public class Donatie {
 	}
 	public void setDataPreluare(Date dataPreluare) {
 		this.dataPreluare = dataPreluare;}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
 	
 }

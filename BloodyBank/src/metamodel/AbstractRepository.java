@@ -20,12 +20,14 @@ public abstract class AbstractRepository implements Tranzactii {
 	}
 
 	public Object create(Object o) {
+		this.beginTransaction();
 		this.getEm().persist(o);
+		this.commitTransaction();
 		return o;
 	}
 
 	public Object update(Object o) {
-		Object managedEntity = this.em.merge(o);
+		Object managedEntity = AbstractRepository.em.merge(o);
 		return managedEntity;
 	}
 
@@ -39,6 +41,6 @@ public abstract class AbstractRepository implements Tranzactii {
 	}
 
 	public void setEm(EntityManager em) {
-		this.em = em;
+		AbstractRepository.em = em;
 	}
 }

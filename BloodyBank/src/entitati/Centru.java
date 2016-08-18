@@ -2,6 +2,7 @@ package entitati;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,8 +18,7 @@ public class Centru {
 	private String adresa;
 	@Column
 	private String telefon;
-	@Column @OneToMany
-	private List<Angajat> Angajati;
+	
 	
 	
 	
@@ -26,15 +26,32 @@ public class Centru {
 	public Centru() {
 		super();
 	}
+	
+	
 	public Centru(String nrCentru, String numeCentru, String adresa,
-			String telefon, List<Angajat> angajati) {
+			String telefon) {
 		super();
 		this.nrCentru = nrCentru;
 		this.numeCentru = numeCentru;
 		this.adresa = adresa;
 		this.telefon = telefon;
-		Angajati = angajati;
 	}
+
+
+	
+	
+//	public void addAngajat(Angajat angajat){
+//        if (!this.Angajati.contains(angajat)){
+//            this.Angajati.add(angajat);
+//        }
+//    }
+//	
+//	public void removeAngajat(Angajat angajat){
+//        if (this.Angajati.contains(angajat)){
+//            this.Angajati.remove(angajat);
+//        }
+//    }
+	
 	public String getNrCentru() {
 		return nrCentru;
 	}
@@ -59,12 +76,12 @@ public class Centru {
 	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
-	public List<Angajat> getAngajati() {
-		return Angajati;
-	}
-	public void setAngajati(List<Angajat> angajati) {
-		Angajati = angajati;
-	}
+//	public List<Angajat> getAngajati() {
+//		return Angajati;
+//	}
+//	public void setAngajati(List<Angajat> angajati) {
+//		Angajati = angajati;
+//	}
 	
 	
 }

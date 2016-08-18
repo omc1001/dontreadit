@@ -5,10 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Logare</title>
-<link href="/Stiluri.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/Stiluri.css" rel="stylesheet" type="text/css">
 </head>
-<h1> Logare</h1>
-<body>
 
+<body>
+<div class="langa">
+<h1> Autentificare</h1><br>
+
+        <form method="post" action="BbServlet">        
+        Utilizator:&nbsp;<input type="text" id="utilizator" name="utilizator"/><br/><br/>
+        Parol&#259;:&nbsp;<input type="password" id="parola" name="parola" /><br/><br/>
+        <input type="submit" value="Logare" />
+        </form>
+</div>
 </body>
 </html>

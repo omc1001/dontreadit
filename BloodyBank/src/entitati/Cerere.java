@@ -29,7 +29,7 @@ public class Cerere {
 	
 	public Cerere() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public Spital getDestinatar() {
