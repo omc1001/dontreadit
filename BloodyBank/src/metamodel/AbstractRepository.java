@@ -43,4 +43,8 @@ public abstract class AbstractRepository implements Tranzactii {
 	public void setEm(EntityManager em) {
 		AbstractRepository.em = em;
 	}
+	
+	public  EntityManagerFactory getEmf(){
+		return emf;
+	}
 }

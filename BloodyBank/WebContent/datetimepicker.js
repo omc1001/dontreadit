@@ -14,28 +14,28 @@ var winCal;
 var dtToday=new Date();
 var Cal;
 var docCal;
-var MonthName=["January", "February", "March", "April", "May", "June","July", 
-	"August", "September", "October", "November", "December"];
-var WeekDayName=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];	
+var MonthName=["Ian", "Feb", "Mar", "Apr", "Mai", "Iun","Iul", 
+	"Aug", "Sept", "Oct", "Nov", "Dec"];
+var WeekDayName=["D","L","Ma","Mi","J","V", "S"];	
 var exDateTime;//Existing Date and Time
 
 //Configurable parameters
 var cnTop="200";//top coordinate of calendar window.
 var cnLeft="500";//left coordinate of calendar window
-var WindowTitle ="DateTime Picker";//Date Time Picker title.
+var WindowTitle ="Alege&#355;i data:";//Date Time Picker title.
 var WeekChar=2;//number of character for week day. if 2 then Mo,Tu,We. if 3 then Mon,Tue,Wed.
 var CellWidth=20;//Width of day cell.
-var DateSeparator="-";//Date Separator, you can change it to "/" if you want.
+var DateSeparator="/";//Date Separator, you can change it to "/" if you want.
 var TimeMode=24;//default TimeMode value. 12 or 24
 
 var ShowLongMonth=true;//Show long month name in Calendar header. example: "January".
 var ShowMonthYear=true;//Show Month and Year in Calendar header.
 var MonthYearColor="#cc0033";//Font Color of Month and Year in Calendar header.
-var WeekHeadColor="#0099CC";//Background Color in Week header.
+var WeekHeadColor="#cc0033";//Background Color in Week header.
 var SundayColor="#6699FF";//Background color of Sunday.
-var SaturdayColor="#CCCCFF";//Background color of Saturday.
+var SaturdayColor="#6699FF";//Background color of Saturday.
 var WeekDayColor="white";//Background color of weekdays.
-var FontColor="blue";//color of font in Calendar day cell.
+var FontColor="black";//color of font in Calendar day cell.
 var TodayColor="#FFFF33";//Background color of today.
 var SelDateColor="#FFFF99";//Backgrond color of selected date in textbox.
 var YrSelColor="#cc0033";//color of font of Year selector.

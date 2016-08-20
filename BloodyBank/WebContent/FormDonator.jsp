@@ -7,17 +7,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script language="javascript" type="text/javascript" src="datetimepicker.js">
 
-//Date Time Picker script- by TengYong Ng of http://www.rainforestnet.com
-//Script featured on JavaScript Kit (http://www.javascriptkit.com)
-//For this script, visit http://www.javascriptkit.com 
-
 </script>
 <title>Donator</title>
 <link href="${pageContext.request.contextPath}/Stiluri.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<form method="post" action="BbServlet">
+<form method="post" action="BbServlet?action=donator">
 <div class="langa">
 
 
@@ -44,10 +40,12 @@
     <td><input type="text" name="email"></td></tr>
     
     <tr> <td><label>Centrul ales:</label></td>
-    <td> <select id="Centre" name="Centre"> </select></td></tr>
+    <td> <form:select name="centre" path="centre">
+    	<form:options items="${Centre}" />
+	</form:select></td></tr>
     
     <tr><td><label>Alege&#355;i data &#351;i ora:</label></td>
-    <td><input id="demo3" type="text" size="18"><a href="javascript:NewCal('demo3','ddmmmyyyy',true,24)"><img src="cal.gif" width="16" height="16" border="0" alt="Alege o data"></a></td></tr>
+    <td><input id="demo3" type="text" size="18"><a href="javascript:NewCal('demo3','ddmmmyyyy',true,24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Alege o data"></a></td></tr>
 	
 	<tr><td><label>Avertizare:</label> </td>
     <td><input type="text" name="avertizare"></td></tr>

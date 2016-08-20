@@ -5,12 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Angajat</title>
-<link href="/Stiluri.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/Stiluri.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<form class="langa" action = "BbServlet">
-		
-	Don't crash
+<form action = "BbServlet?action=angajat" class="langa" method="post">
+	<div style="align: right">
+	
+	</div>
+	
 </form>
 </body>
 </html>

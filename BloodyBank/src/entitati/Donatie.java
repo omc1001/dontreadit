@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -22,23 +24,30 @@ public class Donatie {
 	private Angajat angajat;
 	@Column
 	private Double cantitate;
-	@Column
-	private String tip;
-	@Column
-	private Date dataPreluare;
+	
+	@Column @Temporal(TemporalType.TIMESTAMP)
+	private Date dataProgramata;
+	@Column @Temporal(TemporalType.TIMESTAMP)
+	private Date dataColectare;
 	@Column 
 	private String status;
 	
 	
 	
+	
+	public Donatie(Donator donator, Centru centru, Date dataProgramata) {
+		super();
+		this.donator = donator;
+		this.centru = centru;
+		this.dataProgramata = dataProgramata;
+	}
 	public Donatie(Donator donator, Centru centru, Angajat angajat,
-			Double cantitate, String tip) {
+			Double cantitate) {
 		super();
 		this.donator = donator;
 		this.centru = centru;
 		this.angajat = angajat;
 		this.cantitate = cantitate;
-		this.tip = tip;
 	}
 	public Donatie() {
 		super();
@@ -68,18 +77,13 @@ public class Donatie {
 	public void setCantitate(Double cantitate) {
 		this.cantitate = cantitate;
 	}
-	public String getTip() {
-		return tip;
-	}
-	public void setTip(String tip) {
-		this.tip = tip;
-	}
 	
-	public Date getDataPreluare() {
-		return dataPreluare;
+	
+	public Date getDataProgramata() {
+		return dataProgramata;
 	}
-	public void setDataPreluare(Date dataPreluare) {
-		this.dataPreluare = dataPreluare;}
+	public void setDataProgramata(Date dataProgramata) {
+		this.dataProgramata = dataProgramata;}
 	public long getId() {
 		return id;
 	}
@@ -91,6 +95,12 @@ public class Donatie {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public Date getDataColectare() {
+		return dataColectare;
+	}
+	public void setDataColectare(Date dataColectare) {
+		this.dataColectare = dataColectare;
 	}
 	
 	

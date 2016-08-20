@@ -1,12 +1,18 @@
 package mc;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
-import javax.swing.JOptionPane;
 
+import entitati.Angajat;
+import entitati.Donatie;
 import entitati.Donator;
 import entitati.Centru;
  
@@ -22,38 +28,26 @@ public class BbServlet extends HttpServlet {
     protected void doGet(
         HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-	try{
-		response.setContentType("text/html");
-		
-		//logarea utilizatorilor
     	
-        String user = request.getParameter("utilizator");
-        String pass = request.getParameter("parola");
-        
-        if (model.autentificare(user, pass).equalsIgnoreCase("regular"))
-        		response.sendRedirect("FormAngajat.jsp");
-        else if (model.autentificare(user, pass).equalsIgnoreCase("master"))
-        		response.sendRedirect("FormAdmin.jsp");	        	
-        else
-        {
-        	JOptionPane.showMessageDialog(null, "Ati introdus utilizatorul sau parola gresit");
-        	response.sendRedirect("Logare.jsp");
-        	
-        }
+    	try{
+    	String action = request.getParameter("action");
+    	if (action.equals("donator"))
+    	{    
+        //centre
+//    	
+       response.setContentType("text/html");
+//    	ArrayList<Centru> lista=new ArrayList();
+//    	lista.clear();
+//		for (Centru c:model.ListaCentre()){
+//			lista.add(c);
+//			;}
+//		request.setAttribute("Centre", lista);
+//		RequestDispatcher rd = request.getRequestDispatcher("FormDonator.jsp");
+//        rd.forward(request, response);
     	
-        //formular donator 
-        response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("TestServlet says hi<br/>");
-		for (Centru c:model.ListaCentre()){
-        	request.setAttribute("Centre", c.getNumeCentru());}
-		RequestDispatcher rd = request.getRequestDispatcher("FormDonator.jsp");
-        rd.forward(request, response);
-        	
-        
-        	
 		//initierea unui nou donator
-    	
+    		Centru centruCurent=model.ListaCentre().get(Integer.parseInt(request.getParameter("centre")));
+    		Date dataProgramare=new Date();
         	Donator donatorCurent=new Donator();
         
             donatorCurent.setNume(request.getParameter("nume").toString());
@@ -69,23 +63,33 @@ public class BbServlet extends HttpServlet {
             if (request.getParameter("salvare")!=null)
             	model.addDonator(donatorCurent);
             
-            
-                         	
-            
+            Donatie donatieCurenta=new Donatie(donatorCurent, centruCurent,  dataProgramare);
             
             
-            
-	}
-            
-            
-    	finally{
-//    		if (model.manager.getTransaction().isActive())
-//                model.manager.getTransaction().rollback();
-//            model.manager.close();
     	}
-           
             
-    };
+            
+   
+    else if (action.equals("angajat")){
+    	
+    	response.setContentType("text/html");
+    	
+    	Angajat a=(Angajat) request.getSession().getAttribute("lsangajat");
+    	request.setAttribute("nume", "nume");
+    	//request.setAttribute("nume", a.getNume().toString());
+    	request.setAttribute("functie", a.getFunctie().toString());
+    	request.setAttribute("centru", a.getCentru().getNumeCentru().toString());
+    	
+ 		RequestDispatcher r = request.getRequestDispatcher("FormAngajat.jsp");
+        //rd.forward(request, response);
+    }
+    	}
+    	
+    	finally{
+    		if (model.getEm().getTransaction().isActive())
+                model.getEm().getTransaction().rollback();
+    			model.getEm().close();
+    	}}
             
             
            

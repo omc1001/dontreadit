@@ -1,5 +1,6 @@
 package entitati;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,7 +19,8 @@ public class Centru {
 	private String adresa;
 	@Column
 	private String telefon;
-	
+	@Column @OneToMany(cascade=CascadeType.ALL)
+	private List<Angajat> angajati=new ArrayList<Angajat>();
 	
 	
 	
@@ -29,28 +31,29 @@ public class Centru {
 	
 	
 	public Centru(String nrCentru, String numeCentru, String adresa,
-			String telefon) {
+			String telefon, List<Angajat> angajati) {
 		super();
 		this.nrCentru = nrCentru;
 		this.numeCentru = numeCentru;
 		this.adresa = adresa;
 		this.telefon = telefon;
+		this.angajati=angajati;
 	}
 
 
 	
 	
-//	public void addAngajat(Angajat angajat){
-//        if (!this.Angajati.contains(angajat)){
-//            this.Angajati.add(angajat);
-//        }
-//    }
-//	
-//	public void removeAngajat(Angajat angajat){
-//        if (this.Angajati.contains(angajat)){
-//            this.Angajati.remove(angajat);
-//        }
-//    }
+	public void addAngajat(Angajat angajat){
+        if (!this.angajati.contains(angajat)||this.angajati.isEmpty()){
+            this.angajati.add(angajat);
+        }
+    }
+	
+	public void removeAngajat(Angajat angajat){
+        if (this.angajati.contains(angajat)){
+            this.angajati.remove(angajat);
+        }
+    }
 	
 	public String getNrCentru() {
 		return nrCentru;
@@ -76,12 +79,10 @@ public class Centru {
 	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
-//	public List<Angajat> getAngajati() {
-//		return Angajati;
-//	}
-//	public void setAngajati(List<Angajat> angajati) {
-//		Angajati = angajati;
-//	}
+	public List<Angajat> getAngajati() {
+		return angajati;
+	}
+	
 	
 	
 }

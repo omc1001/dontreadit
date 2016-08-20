@@ -6,12 +6,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
+@Entity @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Angajat {
 	
 	private String nume;
@@ -30,18 +32,13 @@ public class Angajat {
 	
 	
 	
-	public Angajat(String nume, String cNP, String telefon, String adresa,
-			String email, Date data_angajare, String functie, Centru centru,
+	
+	public Angajat(String nume, String cNP, String telefon,
 			Utilizator utilizator) {
 		super();
 		this.nume = nume;
 		CNP = cNP;
 		this.telefon = telefon;
-		this.adresa = adresa;
-		this.email = email;
-		this.data_angajare = data_angajare;
-		this.functie = functie;
-		this.centru = centru;
 		this.utilizator = utilizator;
 	}
 	public Angajat(String nume, String cNP, String telefon, String Adresa,
@@ -116,6 +113,15 @@ public class Angajat {
 	}
 	public void setFunctie(String functie) {
 		this.functie = functie;
+	}
+	public Utilizator getUtilizator() {
+		return utilizator;
+	}
+	public void setUtilizator(Utilizator utilizator) {
+		this.utilizator = utilizator;
+	}
+	public void setCentru(Centru centru) {
+		this.centru = centru;
 	}
 	
 	

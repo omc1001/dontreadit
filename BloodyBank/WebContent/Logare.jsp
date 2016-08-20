@@ -12,10 +12,10 @@
 <div class="langa">
 <h1> Autentificare</h1><br>
 
-        <form method="post" action="BbServlet">        
+        <form method="post" action="LoginServlet">        
         Utilizator:&nbsp;<input type="text" id="utilizator" name="utilizator"/><br/><br/>
         Parol&#259;:&nbsp;<input type="password" id="parola" name="parola" /><br/><br/>
-        <input type="submit" value="Logare" />
+        <input type="submit" class="button" value="Logare" />
         </form>
 </div>
 </body>

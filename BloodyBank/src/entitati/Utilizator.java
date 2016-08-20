@@ -1,5 +1,6 @@
 package entitati;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,24 +12,18 @@ import javax.persistence.OneToOne;
 @Entity
 public class Utilizator {
 	@Column
-	@Id @GeneratedValue(strategy=GenerationType.AUTO) long id;
+	@Id  @GeneratedValue(strategy=GenerationType.AUTO) long id;
+	@Column
 	private String utilizator;
 	@Column
 	private String parola;
-	@OneToOne@Column
+	@OneToOne(cascade=CascadeType.MERGE)@Column
 	private Angajat angajat;
 	@Column
 	private String tipUtilizator;
 	
 	
-	public Angajat getAngajat() {
-		return angajat;
-	}
-
-
-	public void setAngajat(Angajat angajat) {
-		this.angajat = angajat;
-	}
+	
 
 
 	public Utilizator() {
@@ -62,7 +57,14 @@ public class Utilizator {
 		this.parola = parola;
 	}
 
+	public Angajat getAngajat() {
+		return angajat;
+	}
 
+
+	public void setAngajat(Angajat angajat) {
+		this.angajat = angajat;
+	}
 	public String getTipUtilizator() {
 		return tipUtilizator;
 	}
@@ -71,6 +73,8 @@ public class Utilizator {
 	public void setTipUtilizator(String tipUtilizator) {
 		this.tipUtilizator = tipUtilizator;
 	}
+	
+	
 	
 	
 }

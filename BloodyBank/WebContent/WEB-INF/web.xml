@@ -26,4 +26,14 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogareServlet</display-name>
+    <servlet-name>LogareServlet</servlet-name>
+    <servlet-class>mc.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogareServlet</servlet-name>
+    <url-pattern>/LogareServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

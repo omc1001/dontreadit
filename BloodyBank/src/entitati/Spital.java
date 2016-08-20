@@ -1,10 +1,12 @@
 package entitati;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -15,23 +17,28 @@ public class Spital {
     private String denumire;
      @Column  
     private String adresa;
-    @Column
-    private String localitate;
-    @ManyToMany@Column
-    private List<PersoanaContact> Responsabili;
+    @OneToMany(cascade=CascadeType.PERSIST)@Column
+    private List<PersoanaContact> Responsabili=new ArrayList<PersoanaContact>();
     
-        public Spital(String cIF, String denumire, String adresa,
-			String localitate, List<PersoanaContact> responsabili) {
+        public Spital(String cIF, String denumire, String adresa, List<PersoanaContact> responsabili) {
 		super();
 		CIF = cIF;
 		this.denumire = denumire;
 		this.adresa = adresa;
-		this.localitate = localitate;
 		Responsabili = responsabili;
 	}
 
         
         
+	public Spital(String cIF, String denumire, String adresa) {
+			super();
+			CIF = cIF;
+			this.denumire = denumire;
+			this.adresa = adresa;
+		}
+
+
+
 	public Spital() {
 			super();
 		}
@@ -67,13 +74,7 @@ public class Spital {
 		this.adresa = adresa;
 	}
 
-	public String getLocalitate() {
-		return localitate;
-	}
-
-	public void setLocalitate(String localitate) {
-		this.localitate = localitate;
-	}
+	
 
 	public void addResponsabil(PersoanaContact responsabil){
         if (!this.Responsabili.contains(responsabil)){
