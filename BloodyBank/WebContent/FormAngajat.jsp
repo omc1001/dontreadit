@@ -8,8 +8,9 @@
 <link href="${pageContext.request.contextPath}/Stiluri.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<form action = "BbServlet?action=angajat" class="langa" method="post">
+<form action = "LoginServlet" class="langa" method="post">
 	<div style="align: right">
+	
 	
 	</div>
 	

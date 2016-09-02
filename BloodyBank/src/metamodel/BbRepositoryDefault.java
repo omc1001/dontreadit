@@ -16,6 +16,8 @@ import java.util.List;
 
 
 
+
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -29,6 +31,7 @@ import entitati.Utilizator;
 
 public  class BbRepositoryDefault  extends AbstractRepository implements BbRepository{
 
+	
 	EntityManager manager=getEm();
 	EntityManagerFactory emf=getEmf();
 	
@@ -36,19 +39,31 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 
 	@Override
 	public Donator findDonatorbyCNP(String cnp) {
+		
 		@SuppressWarnings("unchecked")
 		List<Donator> results = (List<Donator>) this.getEm().createQuery("Select d from Donator d where CNP=:cnp").setParameter("cnp", cnp).getResultList();
-		if (!results.isEmpty()) return (Donator) results.get(0);
-		else throw new IllegalArgumentException("nu");
+		if(!results.isEmpty()){
+			return (Donator) results.get(0);
+		}
+		else{
+			return null;
+		}
 		
-	}
+		}
+		
+	
 	
 	public Donator adaugaDonator(Donator donator) {
-	    	if(donator.getCnp()==null)
-			return (Donator)this.create(donator);
 	    	
-	    	else
-	    		return findDonatorbyCNP(donator.getCnp());
+		if(findDonatorbyCNP(donator.getCnp())==null)
+			{
+			return (Donator)create(donator);
+			}
+			
+		else{
+			return findDonatorbyCNP(donator.getCnp());
+		}
+		
 		
 	}
 

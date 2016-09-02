@@ -7,7 +7,7 @@
   <servlet>
     <display-name>BbServlet</display-name>
     <servlet-name>BbServlet</servlet-name>
-    <jsp-file>/FormDonator.jsp</jsp-file>
+    <servlet-class>mc.BbServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>BbServlet</servlet-name>
@@ -25,15 +25,5 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>SFC</display-name>
-    <servlet-name>SFC</servlet-name>
-    <servlet-class>mc.SFC</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SFC</servlet-name>
-    <url-pattern>/SFC</url-pattern>
   </servlet-mapping>
 </web-app>

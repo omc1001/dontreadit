@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -32,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
 import entitati.Angajat;
 import entitati.Donatie;
 import entitati.Donator;
@@ -42,91 +44,73 @@ import entitati.Centru;
 @Controller@RequestMapping("/FormDonator") 
 public class BbServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
- 
-  
-    BbModel model=new BbModel();
-	 
-    @Autowired
-    private BbValidator validator; 
+    
    
-    
-    @RequestMapping(value="/list", method=RequestMethod.POST) 
-    public String onSubmit(@ModelAttribute("cboCentre")Centru c, 
-        BindingResult result) { 
-         if (result.hasErrors()) 
-            return "Eroare.jsp"; 
-        
-        return "redirect:index.jsp"; 
-        
-    } 
-    
-    @RequestMapping(value="/list", method=RequestMethod.GET) 
-    public String initializeForm(Model m) { 
-    	
-        // Perform and Model / Form initialization
-        List<Centru> cboCentre=model.ListaCentre();
-        m.addAttribute("toateCentrele", cboCentre);
-        m.addAttribute("cboCentre", model.ListaCentre());
-        return "refresh:FormDonator.jsp"; 
-    } 
-    
-    
+    @Override
+    protected void doGet(
+            HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		//initierea unui nou donator
-    		
+        String nextJSP = "/FormDonator.jsp";
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+        dispatcher.forward(request,response);
+    }
   
-        	
-    @RequestMapping(value="/donator", params = {"nume", "CNP", "adresa", "email", "grupa", "telefon"})
-        			public @ResponseBody Donator d(
-        			@RequestParam(value = "nume") String nume, 
-        			@RequestParam(value = "CNP") String CNP, 
-        			@RequestParam(value = "adresa") String adresa, 
-        			@RequestParam(value = "email") String email, 
-        			@RequestParam(value = "grupa") String grupa, 
-        			@RequestParam(value = "telefon") String telefon) {
-    					Donator donatorCurent=new Donator();
-				        donatorCurent.setNume("nume");
-				        donatorCurent.setCnp("CNP");
-				        donatorCurent.setAdresa("adresa");
-				        donatorCurent.setEmail("email");
-				        donatorCurent.setGrupa("grupa");
-				        donatorCurent.setTelefon("telefon");
-				        model.addDonator(donatorCurent);
-				        return donatorCurent;
-        			}
-        	
-//            
-//            
-//   
-//    else if (action.equals("angajat")){
-//    	
-//    	response.setContentType("text/html");
-//    	
-//    	Angajat a=(Angajat) request.getSession().getAttribute("lsangajat");
-//    	request.setAttribute("nume", "nume");
-//    	//request.setAttribute("nume", a.getNume().toString());
-//    	request.setAttribute("functie", a.getFunctie().toString());
-//    	request.setAttribute("centru", a.getCentru().getNumeCentru().toString());
-//    	
-// 		RequestDispatcher r = request.getRequestDispatcher("FormAngajat.jsp");
-//        //rd.forward(request, response);
-//    }
-//    	}
-//    	
-//    	finally{
-//    		if (model.getEm().getTransaction().isActive())
-//                model.getEm().getTransaction().rollback();
-//    			model.getEm().close();
-//    	}}
-            
+   
             
            
             
         
-//    @Override
-//    protected void doPost(
-//        HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        doGet(request, response);
-//    }
+    @Override
+    protected void doPost(
+        HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    	 BbModel model=new BbModel();
+    	 
+    	 
+    	 
+    	 
+    	 try {
+    		 	EntityManager m=model.getEm();
+    	        String action = request.getParameter("action");
+    	       
+    	        if (action.equals("donator")) {
+    	        response.setContentType("text/html");
+    	           
+    	        
+    	        //centre
+    	        request.setAttribute("Centre", model.ListaCentre());
+    	        
+    	        
+    	 		
+
+    	         //donator
+    	         Donator donatorCurent=new Donator();
+    	         donatorCurent.setNume(request.getParameter("nume"));
+    	         donatorCurent.setCnp(request.getParameter("CNP"));
+    	         donatorCurent.setAdresa(request.getParameter("adresa"));
+    	         donatorCurent.setEmail(request.getParameter("email"));
+    	         donatorCurent.setGrupa(request.getParameter("grupa"));
+    	         donatorCurent.setTelefon(request.getParameter("telefon"));
+    	         model.addDonator(donatorCurent);
+    	         
+    	         //m.close();
+    	         
+    	         String nextJSP = "/FormDonator.jsp";
+     	        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+    	         dispatcher.forward(request, response);
+    	        
+    	        }
+    	 }
+     
+    	        
+     	
+     	finally{
+     		if (model.getEm().getTransaction().isActive())
+                 {model.getEm().getTransaction().rollback();
+     			model.getEm().close();}
+     	}
+    	 }
+             
+        
 }

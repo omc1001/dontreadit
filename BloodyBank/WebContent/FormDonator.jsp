@@ -22,7 +22,7 @@
 </head>
 
 <body>
-<form method="POST" action="BbServlet">
+<form method="POST" action="BbServlet?action=donator">
 <div class="langa">
 
 
@@ -49,16 +49,15 @@
     <td><input type="text" name="email"></td></tr>
     
     
-    
-    <c:url var="saveUrl" value="/list" />
-    <form:form class="darling"  modelAttribute="toateCentrele" action=$saveUrl>
 		<tr> <td><label>Centrul ales:</label></td>
-    	<td>
-    	<form:select path="cboCentre">
-    	<form:option value="NONE" label="---Selecteaza---" />
-                    <form:options items="${cboCentre}" />
-                    </form:select></form:form>
-			
+    	<td> 
+    	<select name="Centre" id="Centre">
+   		
+   		 <c:forEach items="${Centre}" var="centru">
+        <option value=${centru.numeCentru}></option>
+    	</c:forEach>
+</select>
+    	
     	</td></tr>
     
     <tr><td><label>Alege&#355;i data &#351;i ora:</label></td>
