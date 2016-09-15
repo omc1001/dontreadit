@@ -2,7 +2,14 @@ package metamodel;
 
 
 
+import java.util.Date;
 import java.util.List;
+
+
+
+
+
+
 
 
 
@@ -23,6 +30,7 @@ import javax.persistence.EntityManagerFactory;
 
 import entitati.Angajat;
 import entitati.Centru;
+import entitati.Donatie;
 import entitati.Donator;
 import entitati.Spital;
 import entitati.Utilizator;
@@ -66,6 +74,12 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 		
 		
 	}
+	
+	public Donatie adaugaDonatie(Donatie donatie) {
+    	
+			return (Donatie)create(donatie);
+		
+	}
 
 	@Override
 	public Donator actualizareDonator(Donator donator) {
@@ -98,6 +112,11 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	@Override
 	public Centru findCentruByNr(String numar) {
 		return (Centru) this.getEm().createQuery("Select c from Centru c where nrCentru=:numar").setParameter("numar", numar).getSingleResult();
+	}
+	
+	@Override
+	public Centru findCentruByNume(String numar) {
+		return (Centru) this.getEm().createQuery("Select c from Centru c where numeCentru=:numar").setParameter("numar", numar).getSingleResult();
 	}
 
 	@Override
@@ -147,6 +166,44 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 		if (!results.isEmpty()) return (Spital) results.get(0);
 		else throw new IllegalArgumentException("nu");
 	}
+
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Donatie> ListaDonatii() {
+		return (List<Donatie>) this.getEm().createQuery("Select d from Donatie d").getResultList();
+	}
+
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Donatie> ListaDonatiiByCNP(String cnp) {
+		return (List<Donatie>) this.getEm().createQuery("Select d from Donatie d where donator=:don").
+				setParameter("don", this.findDonatorbyCNP(cnp)).getResultList();
+	}
+
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Donatie> ListaDonatiiByData(Date data) {
+		 return (List<Donatie>) this.getEm().createQuery("Select d from Donatie d where dataColectare=:data").
+				setParameter("data", data).getResultList();
+	}
+
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Donatie> ListaDonatiiByCentru(Centru c) {
+		
+		return (List<Donatie>) this.getEm().createQuery("Select d from Donatie d where centru=:centru").
+				setParameter("centru", c).getResultList();
+	}
+	
+	
 
 	
 

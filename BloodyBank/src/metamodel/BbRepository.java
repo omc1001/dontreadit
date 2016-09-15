@@ -1,5 +1,6 @@
 package metamodel;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 
 import entitati.Angajat;
 import entitati.Centru;
+import entitati.Donatie;
 import entitati.Donator;
 import entitati.Spital;
 import entitati.Utilizator;
@@ -24,6 +26,8 @@ public interface BbRepository extends Tranzactii{
 		
 		public Centru findCentruByNr(String numar);
 		public List<Centru> ListaCentre();
+		Centru findCentruByNume(String numar);
+		
 		
 		public List<Angajat> ListaAngajati();
 		public Angajat findAngajatByCnp(String cnp);
@@ -32,6 +36,15 @@ public interface BbRepository extends Tranzactii{
 		public Utilizator autentificare(String user, String pass);
 		
 		public Spital findSpitalByCif(String cif);
+		
+		public Donatie adaugaDonatie(Donatie donatie);
+		public List<Donatie> ListaDonatii();
+		public List<Donatie> ListaDonatiiByCNP(String cnp);
+		public List<Donatie> ListaDonatiiByData(Date data);
+		public List<Donatie> ListaDonatiiByCentru(Centru c);
+		
+		
+		
 		
 		
 }

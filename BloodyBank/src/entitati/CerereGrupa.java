@@ -17,8 +17,7 @@ public class CerereGrupa {
 	private Double cantitate;
 	 @Column
 	private String tip;
-	 @Column
-	private Centru centruOrig;
+	
 	 
 	public Cerere getCerere() {
 		return cerere;
@@ -50,11 +49,5 @@ public class CerereGrupa {
 		this.tip = tip;
 	}
 
-	public Centru getCentruOrig() {
-		return centruOrig;
-	}
-
-	public void setCentruOrig(Centru centruOrig) {
-		this.centruOrig = centruOrig;
-	}
+	
 }

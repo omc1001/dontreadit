@@ -18,6 +18,9 @@ public class TransferGrupa {
 	private String tip;
 	@Column
 	private Double cantitate;
+	
+	
+	
 	public Spital getSpital() {
 		return spital;
 	}

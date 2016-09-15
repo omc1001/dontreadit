@@ -123,6 +123,10 @@ public class Angajat {
 	public void setCentru(Centru centru) {
 		this.centru = centru;
 	}
+	@Override
+	public String toString() {
+		return  nume;
+	}
 	
 	
 	

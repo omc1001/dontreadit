@@ -216,8 +216,7 @@ function RenderCal()
 		vCalTime+="<input type='text' name='hour' maxlength=2 size=1 style=\"WIDTH: 22px\" value="+showHour+" onchange=\"javascript:winMain.Cal.SetHour(this.value)\">";
 		vCalTime+=" : ";
 		vCalTime+="<input type='text' name='minute' maxlength=2 size=1 style=\"WIDTH: 22px\" value="+Cal.Minutes+" onchange=\"javascript:winMain.Cal.SetMinute(this.value)\">";
-		vCalTime+=" : ";
-		vCalTime+="<input type='text' name='second' maxlength=2 size=1 style=\"WIDTH: 22px\" value="+Cal.Seconds+" onchange=\"javascript:winMain.Cal.SetSecond(this.value)\">";
+		
 		if (TimeMode==12)
 		{
 			var SelectAm =(parseInt(Cal.Hours,10)<12)? "Selected":"";
@@ -262,7 +261,7 @@ function GenCell(pValue,pHighLight,pColor)//Generate table cell with value
 	
 	if (Cal.ShowTime)
 	{
-		vTimeStr="winMain.document.getElementById('"+Cal.Ctrl+"').value+=' '+"+"winMain.Cal.getShowHour()"+"+':'+"+"winMain.Cal.Minutes"+"+':'+"+"winMain.Cal.Seconds";
+		vTimeStr="winMain.document.getElementById('"+Cal.Ctrl+"').value+=' '+"+"winMain.Cal.getShowHour()"+"+':'+"+"winMain.Cal.Minutes";
 		if (TimeMode==12)
 			vTimeStr+="+' '+winMain.Cal.AMorPM";
 	}	

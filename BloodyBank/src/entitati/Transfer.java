@@ -27,6 +27,9 @@ public class Transfer {
 	@Column
 	private String explicatii;
 	
+	
+	
+	
 	public List<Angajat> getRespTransfer() {
 		return respTransfer;
 	}
@@ -59,6 +62,28 @@ public class Transfer {
 	public void setExplicatii(String explicatii) {
 		this.explicatii = explicatii;
 	}
+	
+	public void addGrupa(TransferGrupa transferGrupa){
+        if (!this.linii.contains(transferGrupa)){
+            this.linii.add(transferGrupa);
+        }
+    }
+    
+    public void removeGrupa(TransferGrupa transferGrupa)
+    {if (this.linii.contains(transferGrupa)){
+        this.linii.remove(transferGrupa);
+    }}
+    
+    public void addResponsabil(Angajat responsabil){
+        if (!this.respTransfer.contains(responsabil)){
+            this.respTransfer.add(responsabil);
+        }
+    }
+    
+    public void removeResponsabil(Angajat responsabil)
+    {if (this.respTransfer.contains(responsabil)){
+        this.respTransfer.remove(responsabil);
+    }}
 	
 	
 	

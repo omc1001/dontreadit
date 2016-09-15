@@ -20,28 +20,28 @@ public class LoginServlet extends HttpServlet {
 			String user = request.getParameter("utilizator");
 	        String pass = request.getParameter("parola");
 	       
-	       
-	        
-	        
-	        
-	        if (model.autentificare(user, pass).equalsIgnoreCase("regular"))
-	        		{
-	        	response.sendRedirect("FormAngajat.jsp");
-	        	return;}
-	         if (!model.autentificare(user, pass).equalsIgnoreCase("neautentificat")){
-	        	  Angajat a= model.findAngajatByUser(model.getUtilizator(user, pass));
-	  	       	request.getSession().setAttribute("lsangajat", a);
-	         		getServletContext().getRequestDispatcher("/BbServlet").forward(request,response);
-	         		return;
-	        		}
-	        else if (model.autentificare(user, pass).equalsIgnoreCase("master"))
-	        		{response.sendRedirect("FormAdmin.jsp");	        	
-	        		}
+	        if (!model.autentificare(user, pass).equalsIgnoreCase("neautentificat")){
+	        	
+	        	Angajat a= model.findAngajatByUser(model.getUtilizator(user, pass));
+  	       		request.getSession().setAttribute("lsangajat", a);
+	         		
+	        		
+	         		if (model.autentificare(user, pass).equalsIgnoreCase("regular"))
+	         		{
+		        	request.getRequestDispatcher("WEB-INF/FormAngajat.jsp").forward(request, response);
+		        	return;
+	         		}
+				         else if (model.autentificare(user, pass).equalsIgnoreCase("master"))
+				        		{request.getRequestDispatcher("WEB-INF/FormAdmin.jsp").forward(request, response);       	
+				        		}
+	        }
 	        else
 	        {
 	        	response.sendRedirect("Eroare.jsp");
 	        	
 	        }
+	        
+	        
 
 	}
 

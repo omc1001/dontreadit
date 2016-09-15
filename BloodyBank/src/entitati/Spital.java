@@ -82,7 +82,7 @@ public class Spital {
         }
     }
     
-    public void removeIBAN(PersoanaContact responsabil)
+    public void removeResponsabil(PersoanaContact responsabil)
     {if (this.Responsabili.contains(responsabil)){
         this.Responsabili.remove(responsabil);
     }}

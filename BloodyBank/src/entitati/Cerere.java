@@ -65,6 +65,17 @@ public class Cerere {
 		this.linii = linii;
 	}
 	
+	public void addGrupa(CerereGrupa cerereGrupa){
+        if (!this.linii.contains(cerereGrupa)){
+            this.linii.add(cerereGrupa);
+        }
+    }
+    
+    public void removeGrupa(CerereGrupa cerereGrupa)
+    {if (this.linii.contains(cerereGrupa)){
+        this.linii.remove(cerereGrupa);
+    }}
+	
 	
 
 }

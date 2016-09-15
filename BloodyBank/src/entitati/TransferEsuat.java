@@ -16,7 +16,7 @@ public class TransferEsuat extends Transfer{
 	@ManyToOne @Column
 	private Donator donatorResp;
 	@Column @ManyToMany
-	private List<Angajat>angajatResp;
+	private List<Angajat>angajatiResp;
 	@Column
 	private String explicatie;
 	
@@ -25,11 +25,11 @@ public class TransferEsuat extends Transfer{
 		super();
 		
 	}
-	public TransferEsuat(Donator donatorResp, List<Angajat> angajatResp,
+	public TransferEsuat(Donator donatorResp, List<Angajat> angajatiResp,
 			String explicatie) {
 		super();
 		this.donatorResp = donatorResp;
-		this.angajatResp = angajatResp;
+		this.angajatiResp = angajatiResp;
 		this.explicatie = explicatie;
 	}
 	public Donator getDonatorResp() {
@@ -38,16 +38,25 @@ public class TransferEsuat extends Transfer{
 	public void setDonatorResp(Donator donatorResp) {
 		this.donatorResp = donatorResp;
 	}
-	public List<Angajat> getAngajatResp() {
-		return angajatResp;
+	public List<Angajat> getAngajatiResp() {
+		return angajatiResp;
 	}
-	public void setAngajatResp(List<Angajat> angajatResp) {
-		this.angajatResp = angajatResp;
-	}
+	
 	public String getExplicatie() {
 		return explicatie;
 	}
 	public void setExplicatie(String explicatie) {
 		this.explicatie = explicatie;
 	}
+	
+	public void addResponsabil(Angajat responsabil){
+        if (!this.angajatiResp.contains(responsabil)){
+            this.angajatiResp.add(responsabil);
+        }
+    }
+    
+    public void removeResponsabil(Angajat responsabil)
+    {if (this.angajatiResp.contains(responsabil)){
+        this.angajatiResp.remove(responsabil);
+    }}
 }

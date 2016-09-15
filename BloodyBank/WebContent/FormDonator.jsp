@@ -9,7 +9,9 @@
       xmlns:form="http://www.springframework.org/tags/form"
       xmlns:spring="http://www.springframework.org/tags"
       xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
-      html:xhtml> 
+      html:xhtml><jsp:directive.page import="entitati.Centru"/>
+<jsp:directive.page import="java.util.ArrayList"/>
+ 
       
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -49,19 +51,21 @@
     <td><input type="text" name="email"></td></tr>
     
     
+    
 		<tr> <td><label>Centrul ales:</label></td>
     	<td> 
     	<select name="Centre" id="Centre">
-   		
-   		 <c:forEach items="${Centre}" var="centru">
-        <option value=${centru.numeCentru}></option>
-    	</c:forEach>
-</select>
-    	
+   		<% ArrayList<Centru> c= (ArrayList<Centru>)request.getAttribute("Centre");
+   		for(Centru a:c){
+   			out.print("<option>" + a.getNumeCentru().toString() + "</option>");
+   			
+   		}
+        %>		
+        </select>
     	</td></tr>
     
     <tr><td><label>Alege&#355;i data &#351;i ora:</label></td>
-    <td><input id="demo3" type="text" size="18"><a href="javascript:NewCal('demo3','ddmmmyyyy',true,24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Alege o data"></a></td></tr>
+    <td><input name="dataProgr" id="demo3" type="text" size="18"><a href="javascript:NewCal('demo3','ddmmmyyyy',true,24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Alege o data"></a></td></tr>
 	
 	<tr><td><label>Avertizare:</label> </td>
     <td><input type="text" name="avertizare"></td></tr>

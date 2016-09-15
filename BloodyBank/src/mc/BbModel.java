@@ -1,4 +1,5 @@
 package mc;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,16 +9,12 @@ import metamodel.BbRepository;
 import metamodel.BbRepositoryDefault;
 import entitati.Angajat;
 import entitati.Centru;
+import entitati.Donatie;
 import entitati.Donator;
 import entitati.Utilizator;
 
 
 public class BbModel {
-	
-	
-	
-//	EntityManagerFactory emf =Persistence.createEntityManagerFactory("$objectdb/db/BloodyBank.odb");
-//    EntityManager manager = emf.createEntityManager();
 	
 	
 	private BbRepository repo=new BbRepositoryDefault();
@@ -72,4 +69,41 @@ public class BbModel {
 	
 	}
 	
+	public void addDonatie(Donatie donatie) {
+		repo.adaugaDonatie(donatie);
+		}
+	
+	public Centru findCentruByNr(String nrCentru){
+		return repo.findCentruByNr(nrCentru);
+	}
+
+
+	public Centru findCentruByNume(String nume) {
+		// TODO Auto-generated method stub
+		return repo.findCentruByNume(nume);
+	}
+	
+	
+	public List<Donatie> getDonatiiByCentru(Centru c){
+		return repo.ListaDonatiiByCentru(c);
+	}
+	
+	
+	public List<Donatie> getDonatii(Date data, String cnp){
+		if((!(cnp==null))&&(!(data==null))){
+			List<Donatie> listaCnp=repo.ListaDonatiiByCNP(cnp);
+			List<Donatie> listaData=repo.ListaDonatiiByData(data);
+			listaCnp.retainAll(listaData);
+			return listaCnp;
+		}
+		else if ((!(cnp==null))&&(data==null)){
+			return repo.ListaDonatiiByCNP(cnp);
+		}
+		else if ((cnp==null)&&(!(data==null))){
+			return repo.ListaDonatiiByData(data);
+		}
+		else {
+			return repo.ListaDonatii();
+		}
+	}
 }
