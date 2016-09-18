@@ -44,7 +44,7 @@ public class Centru {
 	
 	
 	public void addAngajat(Angajat angajat){
-        if (!this.angajati.contains(angajat)||this.angajati.isEmpty()){
+        if (!this.angajati.contains(angajat)){
             this.angajati.add(angajat);
         }
     }

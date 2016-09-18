@@ -24,31 +24,43 @@
 </head>
 
 <body>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div><b>${reply}</b></div>
 <form method="POST" action="BbServlet?action=donator">
 <div class="langa">
-
-
 <h1> Donator</h1>
 <br>
-<table>
-  
-  	<tr> <td><label>CNP: </label></td>
-    <td><input type="text" name="CNP"></td></tr>
+
+    <table>
+  	<tr> 
+  	<td><label>CNP: </label></td>
+    <td><input type="text" name="CNP"></td>
+    <td><input type="image" name="buton" value="read" src="${pageContext.request.contextPath}/images/checksign.png" width="20px" height="20px"></td></tr>
+    
+    <tr>
+    <td> <% if (request.getSession().getAttribute("eroare").equals("dInexistent")){
+    	out.print("<label>" + "Nu exista donatorul in baza de date" + "</label>");
+    }
+    else if (request.getSession().getAttribute("eroare").equals("")) 
+    	out.print("<label>" + "Apasati butonul verde pentru a verifica daca sunteti inregistrat in baza de date" + "</label>");  
+    	else out.print("<label>" + "Am gasit CNP-ul in baza de date." + "</label>");%></td>
+    </tr>
     
     <tr><td><label>Nume &#351;i prenume:</label></td>
-    <td><input type="text" name="nume" ></td></tr>  
+    <td><input type="text" name="nume" value=${nume} /></td></tr>  
     
     <tr><td><label>Grup&#259;:</label></td> 
-    <td><input type="text" name="grupa"></td> </tr>
+    <td><input type="text" name="grupa" value=${grupa}></td> </tr>
   
-   <tr> <td><label>Telefon:</label> </td>
-    <td><input type="text" name="telefon"></td></tr>
+   	<tr> <td><label>Telefon:</label> </td>
+    <td><input type="text" name="telefon" value=${telefon}></td></tr>
     
-   <tr> <td><label>Adresa: </label></td>
-    <td><input type="text" name="adresa"></td></tr>
+   	<tr> <td><label>Adresa: </label></td>
+    <td><input type="text" name="adresa" value=${adresa} ></td></tr>
     
-    <tr> <td><label>Email:</label></td>
-    <td><input type="text" name="email"></td></tr>
+    <tr><td><label>Email:</label></td>
+    <td><input type="text" name="email" value=${email}></td></tr>
     
     
     
@@ -73,7 +85,7 @@
 </table>
 
 <br><br>
-<button type="submit" class="button" name="salvare">Salveaz&#259;</button>&ensp;
+<button type="submit" class="button" name="buton" value="create">Salveaz&#259;</button>&ensp;
 <a href="index.jsp"><button type="button" class="button" name="anulare">Anuleaz&#259;</button></a>
 
 

@@ -11,6 +11,7 @@ import entitati.Angajat;
 import entitati.Centru;
 import entitati.Donatie;
 import entitati.Donator;
+import entitati.Spital;
 import entitati.Utilizator;
 
 
@@ -41,6 +42,14 @@ public class BbModel {
 		this.repo = repo;
 	}
 	
+	public  Donator findDonatorCnp(String cnp){
+		try{
+		return repo.findDonatorbyCNP(cnp);
+		}
+		catch(NullPointerException np){
+			return null;
+		}
+	}
 	public EntityManagerFactory getEmf(){
 		return repo.getEmf();
 	}
@@ -105,5 +114,20 @@ public class BbModel {
 		else {
 			return repo.ListaDonatii();
 		}
+	}
+	
+	public List<Spital> getSpitale(){
+		return repo.ListaSpitale();
+	}
+
+
+	public List<Donatie> getDonatii() {
+		return repo.ListaDonatii();
+	}
+
+
+	public List<Donator> ListaDonatori() {
+		// TODO Auto-generated method stub
+		return repo.ListaDonatori();
 	}
 }

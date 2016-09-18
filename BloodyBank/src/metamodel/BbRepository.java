@@ -10,6 +10,7 @@ import entitati.Angajat;
 import entitati.Centru;
 import entitati.Donatie;
 import entitati.Donator;
+import entitati.PersoanaContact;
 import entitati.Spital;
 import entitati.Utilizator;
 
@@ -36,12 +37,15 @@ public interface BbRepository extends Tranzactii{
 		public Utilizator autentificare(String user, String pass);
 		
 		public Spital findSpitalByCif(String cif);
+		public List<Spital> ListaSpitale();
 		
 		public Donatie adaugaDonatie(Donatie donatie);
 		public List<Donatie> ListaDonatii();
 		public List<Donatie> ListaDonatiiByCNP(String cnp);
 		public List<Donatie> ListaDonatiiByData(Date data);
 		public List<Donatie> ListaDonatiiByCentru(Centru c);
+		
+		public List<PersoanaContact> findPcBySpital(Spital s);
 		
 		
 		

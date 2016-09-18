@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 	        		
 	         		if (model.autentificare(user, pass).equalsIgnoreCase("regular"))
 	         		{
-		        	request.getRequestDispatcher("WEB-INF/FormAngajat.jsp").forward(request, response);
+		        	request.getRequestDispatcher("/WEB-INF/FormAngajat.jsp").forward(request, response);
 		        	return;
 	         		}
 				         else if (model.autentificare(user, pass).equalsIgnoreCase("master"))

@@ -24,23 +24,24 @@
 	</div>
 	<table>
 	
-	<tr><td><label>Alege&#355;i data &#351;i ora:</label></td>
-    <td><input name="dataCol" id="demo3" type="text" size="18">
-    <a href="javascript:NewCal('demo3','ddmmmyyyy',true,24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Alege o data"></a></td></tr>
 	
 	<tr><td><label>Introduce&#355;i CNP:</label></td>
     <td><input name="cnp" type="text" size="18"></td></tr>
 	</table>
-	<table>
+	
+	
+	<table id="tblDonatii">
   <tr>
     <th>CNP</th>
     <th>Donator</th>
     <th>Data programare</th>
+    <th>Data colectare</th>
     <th>Cantitate</th>
   </tr>
   <%
-  	for (Donatie d: (List<Donatie>)request.getSession().getAttribute("donatii")){
-  		out.print("<tr><td>"+d.getDonator().getCnp()+"</td>	<td>"+d.getDonator().getNume()+"</td><td>"+d.getDataProgramata().toString()+"</td><td>"+d.getCantitate()+"</td></tr>");
+  	List<Donatie> donatii=(List<Donatie>)request.getAttribute("donatii");
+  	for (Donatie d: donatii){
+  		out.print("<tr><td>"+d.getDonator().getCnp().toString()+"</td><td>"+d.getDonator().getNume().toString()+"</td><td>"+d.getDataProgramata().toString()+"</td><td>"+d.getDataColectare().toString()+"</td><td>"+d.getCantitate().toString()+"</td></tr>");
   	}
   %>
   </table>

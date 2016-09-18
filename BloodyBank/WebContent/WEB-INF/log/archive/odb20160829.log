@@ -1,0 +1,66 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2016-08-29 00:02:31 #1 store] 
+Database 'D:\Fisiere\eclipse\Workspace\BloodyBank\WebContent\WEB-INF\db\BloodyBank.odb' is opened by 1600@lenovo-PC
+
+[2016-08-29 00:02:31 #2 type] 
+Type entitati.Centru is not enhanced.
+
+[2016-08-29 00:02:32 #3 type] 
+Type entitati.Angajat is not enhanced.
+
+[2016-08-29 00:02:32 #4 type] 
+Type entitati.Utilizator is not enhanced.
+
+[2016-08-29 00:02:32 #5 type] 
+Type entitati.Spital is not enhanced.
+
+[2016-08-29 00:02:32 #6 type] 
+Type entitati.PersoanaContact is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2016-08-29 00:03:02 #1 store] 
+Database 'D:\Fisiere\eclipse\Workspace\BloodyBank\WebContent\WEB-INF\db\BloodyBank.odb' is opened by 6068@lenovo-PC
+
+[2016-08-29 00:03:02 #2 type] 
+Type entitati.Centru is not enhanced.
+
+[2016-08-29 00:03:02 #3 type] 
+Type entitati.Angajat is not enhanced.
+
+[2016-08-29 00:03:02 #4 type] 
+Type entitati.Utilizator is not enhanced.
+
+[2016-08-29 00:03:02 #5 type] 
+Type entitati.Spital is not enhanced.
+
+[2016-08-29 00:03:02 #6 type] 
+Type entitati.PersoanaContact is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2016-08-29 00:03:12 #1 store] 
+Database 'D:\Fisiere\eclipse\Workspace\BloodyBank\WebContent\WEB-INF\db\BloodyBank.odb' is opened by 1220@lenovo-PC
+
+[2016-08-29 00:03:12 #2 type] 
+Type entitati.Centru is not enhanced.
+
+[2016-08-29 00:03:12 #3 type] 
+Type entitati.Angajat is not enhanced.
+
+[2016-08-29 00:03:12 #4 type] 
+Type entitati.Utilizator is not enhanced.
+
+[2016-08-29 00:03:12 #5 type] 
+Type entitati.Spital is not enhanced.
+
+[2016-08-29 00:03:12 #6 type] 
+Type entitati.PersoanaContact is not enhanced.
+
+[2016-08-29 00:03:12 #7 type.registry] 
+New type entitati.Donator
+
+[2016-08-29 00:03:12 #8 type] 
+Type entitati.Donator is not enhanced.
+

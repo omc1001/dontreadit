@@ -6,6 +6,7 @@ import java.util.List;
 
 import entitati.Angajat;
 import entitati.Centru;
+import entitati.Donatie;
 import entitati.Donator;
 import entitati.PersoanaContact;
 import entitati.Spital;
@@ -18,9 +19,11 @@ public class Main {
 		
 		BbModel model = new BbModel();
 		
+		
 		model.getEm().getTransaction().begin();
-		Donator a=new Donator("Ana Aremere", "2781201223002","Nicolina 2","rachita@micsunele.com", "0745123012","B+");
-		model.getEm().persist(a);
+		
+		
+		
 		model.getEm().getTransaction().commit();
 	
 		model.getEm().close();

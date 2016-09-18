@@ -38,13 +38,19 @@ public class Donatie {
 		this.centru = centru;
 		this.dataProgramata = dataProgramata;
 	}
-	public Donatie(Donator donator, Centru centru, 
-			Double cantitate) {
+	
+	
+	public Donatie(Donator donator, Centru centru, Double cantitate,
+			Date dataProgramata, Date dataColectare) {
 		super();
 		this.donator = donator;
 		this.centru = centru;
 		this.cantitate = cantitate;
+		this.dataProgramata = dataProgramata;
+		this.dataColectare = dataColectare;
 	}
+
+
 	public Donatie() {
 		super();
 		

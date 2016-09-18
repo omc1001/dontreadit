@@ -25,6 +25,9 @@ import java.util.List;
 
 
 
+
+
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -32,6 +35,7 @@ import entitati.Angajat;
 import entitati.Centru;
 import entitati.Donatie;
 import entitati.Donator;
+import entitati.PersoanaContact;
 import entitati.Spital;
 import entitati.Utilizator;
 
@@ -65,7 +69,8 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	    	
 		if(findDonatorbyCNP(donator.getCnp())==null)
 			{
-			return (Donator)create(donator);
+			this.create(donator);
+			return donator;
 			}
 			
 		else{
@@ -201,6 +206,22 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 		
 		return (List<Donatie>) this.getEm().createQuery("Select d from Donatie d where centru=:centru").
 				setParameter("centru", c).getResultList();
+	}
+
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Spital> ListaSpitale() {
+		return this.getEm().createQuery("Select s from Spital s").getResultList();
+	}
+
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PersoanaContact> findPcBySpital(Spital s) {
+		return (List<PersoanaContact>)this.getEm().createQuery("Select pc from PersoanaContact pc where spital=:s").setParameter("s", s).getResultList();
 	}
 	
 	

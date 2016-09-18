@@ -57,29 +57,31 @@ public class BbServlet extends HttpServlet {
 
     	String action = request.getParameter("action");
     	BbModel model=new BbModel();
+    	
     	if (action.equals("donator")) {
     	 //centre
+    	request.setAttribute("Centre", model.ListaCentre());
     	
-        request.setAttribute("Centre", model.ListaCentre());
         String nextJSP = "/FormDonator.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-        dispatcher.forward(request,response);}
+        dispatcher.forward(request,response);
+        }
+    	
     	
     	
     	if(action.equals("angajat")){
     	Centru c=((Angajat)request.getSession().getAttribute("lsangajat")).getCentru();	
         request.setAttribute("donatii", model.getDonatiiByCentru(c));
+        
+        
         String nextJSP = "WEB-INF/FormAngajat.jsp";
-	        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+	    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         dispatcher.forward(request, response);
     	}
     }
   
    
-            
-           
-            
-        
+    
     @Override
     protected void doPost(
         HttpServletRequest request, HttpServletResponse response)
@@ -92,8 +94,32 @@ public class BbServlet extends HttpServlet {
     	       
     	        if (action.equals("donator")) {
     	        response.setContentType("text/html");
-    	         
-    	        //donator
+    	        
+    	        if (request.getParameter("buton").equals("read")){
+    	        	
+    	        	Donator dform=model.findDonatorCnp(request.getParameter("CNP"));
+    	        	
+    	        	if (!(dform==null))
+    	        	{
+    	        		//daca exista, trimitere catre jsp
+    	        		request.setAttribute("reply", "User Already Exists"); // Just an example
+    	        		request.setAttribute("CNP", dform.getCnp().toString());
+    	        		request.setAttribute("nume", dform.getNume().toString());
+    	        		request.setAttribute("telefon", dform.getTelefon().toString());
+    	        		request.setAttribute("adresa", dform.getAdresa().toString());
+    	        		request.setAttribute("email", dform.getEmail().toString());
+    	        		
+    	        		
+    	        	}
+    	        	else{
+    	        		//eroare daca nu este gasit
+    	        		request.getSession().setAttribute("eroare", "Donatorul nu a fost gasit");
+    	        		
+    	        	}
+    	        	
+    	        }
+        	 else {
+        		//donator nou
     	         Donator donatorCurent=new Donator();
     	         donatorCurent.setNume(request.getParameter("nume"));
     	         donatorCurent.setCnp(request.getParameter("CNP"));
@@ -101,8 +127,13 @@ public class BbServlet extends HttpServlet {
     	         donatorCurent.setEmail(request.getParameter("email"));
     	         donatorCurent.setGrupa(request.getParameter("grupa"));
     	         donatorCurent.setTelefon(request.getParameter("telefon"));
+    	         
+        	 
     	         model.addDonator(donatorCurent);
     	         
+    	        
+    	        
+    	        
     	         // donatie
     	         Donatie donatieCurenta=new Donatie();
     	         Centru centruAles=model.findCentruByNume(request.getParameter("Centre"));
@@ -117,44 +148,19 @@ public class BbServlet extends HttpServlet {
 					e.printStackTrace();
 				}
     	        donatieCurenta.setDataProgramata(dataP);
+    	        
     	        donatieCurenta.setDonator(donatorCurent);
     	         
     	        model.addDonatie(donatieCurenta);
-    	         
-    	        // response.sendRedirect("Eroare.jsp");
     	        
     	        }
-    	        
+    	        }
     	        else if(action.equals("angajat")){
     	        	response.setContentType("text/html");
     	        	
     	        	request.setAttribute("numeAngajat", request.getAttribute("lsangajat").toString());
     	        	
-    	        	//filtre donatii 
-//    	        	Centru c=((Angajat)request.getSession().getAttribute("lsangajat")).getCentru();
-//    	        	List<Donatie> donatii=model.getDonatiiByCentru(c);
-//    	        	
-//    	        	SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/YYYY");
-//       	        Date dataCol=null; 
-//    	        try {
-//   					dataCol=sdf.parse(request.getParameter("dataCol"));
-//   				} catch (ParseException e) {
-//   					// TODO Auto-generated catch block
-//   					e.printStackTrace();
-//   				}
-//    	        
-//    	        String cnp=request.getParameter("cnp");
-//    	        List<Donatie> donatiiFiltre=model.getDonatii(dataCol, cnp);
-//    	        
-//    	        List<Donatie> common=new ArrayList<Donatie>(donatii);
-//    	        common.retainAll(donatiiFiltre);
-//    	        
-//    	        request.setAttribute("donatii", common);
-    	        
-    	        
-    	        	
-        	         
-    	        }
+    	      }
     	 }
      
     	        
