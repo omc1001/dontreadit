@@ -83,7 +83,7 @@
     </td></tr>
     
     <tr><td><label>Alege&#355;i data &#351;i ora:</label></td>
-    <td><input name="dataProgr" id="demo3" type="text" size="18"><a href="javascript:NewCal('demo3','ddmmyyyy',true,24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Alege o data"></a></td></tr>
+    <td><input name="dataProgr" id="demo3" type="text" size="18"><a href="javascript:NewCal('demo3','ddMMYYYY',true,24)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Alege o data"></a></td></tr>
 	
 	<tr><td><label>Avertizare:</label> </td>
     <td><input type="text" name="avertizare"></td></tr>
