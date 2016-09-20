@@ -14,8 +14,8 @@ var winCal;
 var dtToday=new Date();
 var Cal;
 var docCal;
-var MonthName=["Ian", "Feb", "Mar", "Apr", "Mai", "Iun","Iul", 
-	"Aug", "Sept", "Oct", "Nov", "Dec"];
+var MonthName=["01", "02", "03", "04", "05", "06","07", 
+	"08", "09", "10", "11", "12"];
 var WeekDayName=["D","L","Ma","Mi","J","V", "S"];	
 var exDateTime;//Existing Date and Time
 

@@ -61,7 +61,7 @@ public class BbServlet extends HttpServlet {
     	if (action.equals("donator")) {
     	 //centre
     	request.setAttribute("Centre", model.ListaCentre());
-    	
+    	request.setAttribute("eroare", "");
         String nextJSP = "/FormDonator.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         dispatcher.forward(request,response);
@@ -113,7 +113,7 @@ public class BbServlet extends HttpServlet {
     	        	}
     	        	else{
     	        		//eroare daca nu este gasit
-    	        		request.getSession().setAttribute("eroare", "Donatorul nu a fost gasit");
+    	        		request.setAttribute("eroare", "Donatorul nu a fost gasit");
     	        		
     	        	}
     	        	
@@ -131,15 +131,12 @@ public class BbServlet extends HttpServlet {
         	 
     	         model.addDonator(donatorCurent);
     	         
-    	        
-    	        
-    	        
     	         // donatie
     	         Donatie donatieCurenta=new Donatie();
     	         Centru centruAles=model.findCentruByNume(request.getParameter("Centre"));
     	         donatieCurenta.setCentru(centruAles);
     	         
-    	         SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
+    	         SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/YYYY HH:mm");
     	         Date dataP=new Date();
     	         try {
 					dataP=sdf.parse(request.getParameter("dataProgr"));
@@ -167,7 +164,8 @@ public class BbServlet extends HttpServlet {
      	
      	finally{
      		if (model.getEm().getTransaction().isActive())
-                 {model.getEm().getTransaction().rollback();
+                 {
+     			model.getEm().getTransaction().rollback();
      			model.getEm().close();}
      	}
     	 }
