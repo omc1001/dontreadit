@@ -21,6 +21,7 @@
 </script>
 <title>Donator</title>
 <link href="${pageContext.request.contextPath}/Stiluri.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/cnpdonator.js"></script>
 </head>
 
 <body>
@@ -35,23 +36,19 @@
     <table>
   	<tr> 
   	<td><label>CNP: </label></td>
-    <td><input type="text" name="CNP"></td>
-    <td><input type="image" name="buton" value="read" src="${pageContext.request.contextPath}/images/checksign.png" width="20px" height="20px"></td></tr>
+    <td><input type="text" name="CNP" id="CNP"></td>
+    <td><input type="image" name="buton" value="read" src="${pageContext.request.contextPath}/images/checksign.png" 
+    width="20px" height="20px" onClick="checkCNP()"></td></tr>
     
     <tr>
-    <td> <% if(request.getAttribute("eroare").equals("dInexistent")){
-    	out.print("<label>" + "Nu exista donatorul in baza de date" + "</label>");
-    }
-    else if (request.getAttribute("eroare").equals("")) 
-    	out.print("<label>Verificati daca sunteti</label></td><td><label>inregistrat.</label>");  
-    	else out.print("<label> Am gasit CNP-ul in baza de date.</label>");%></td>
-    </tr>
+    <td><p id="cnp">Verificati dac&#259; suntei inresistrat deja</p></tr>
     
     <tr><td><label>Nume &#351;i prenume:</label></td>
     <td><input type="text" name="nume" value=${nume} ></td></tr>  
     
     <tr><td><label>Grup&#259;:</label></td> 
     <td><select name="grupa" id="Centre" value=${grupa }>
+      <option value="null">Alege&#355;i grupa</option>
       <option value="A+">A+</option>
 	  <option value="A-">A-</option>
 	  <option value="B+">B+</option>

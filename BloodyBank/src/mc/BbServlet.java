@@ -73,7 +73,6 @@ public class BbServlet extends HttpServlet {
     	Centru c=((Angajat)request.getSession().getAttribute("lsangajat")).getCentru();	
         request.setAttribute("donatii", model.getDonatiiByCentru(c));
         
-        
         String nextJSP = "WEB-INF/FormAngajat.jsp";
 	    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         dispatcher.forward(request, response);
@@ -94,31 +93,7 @@ public class BbServlet extends HttpServlet {
     	       
     	        if (action.equals("donator")) {
     	        response.setContentType("text/html");
-    	        
-    	        if (request.getParameter("buton").equals("read")){
-    	        	
-    	        	Donator dform=model.findDonatorCnp(request.getParameter("CNP"));
-    	        	
-    	        	if (!(dform==null))
-    	        	{
-    	        		//daca exista, trimitere catre jsp
-    	        		request.setAttribute("reply", "User Already Exists"); // Just an example
-    	        		request.setAttribute("CNP", dform.getCnp().toString());
-    	        		request.setAttribute("nume", dform.getNume().toString());
-    	        		request.setAttribute("telefon", dform.getTelefon().toString());
-    	        		request.setAttribute("adresa", dform.getAdresa().toString());
-    	        		request.setAttribute("email", dform.getEmail().toString());
-    	        		
-    	        		
-    	        	}
-    	        	else{
-    	        		//eroare daca nu este gasit
-    	        		request.setAttribute("eroare", "Donatorul nu a fost gasit");
-    	        		
-    	        	}
-    	        	
-    	        }
-        	 else {
+//    	        
         		//donator nou
     	         Donator donatorCurent=new Donator();
     	         donatorCurent.setNume(request.getParameter("nume"));
@@ -151,7 +126,7 @@ public class BbServlet extends HttpServlet {
     	        model.addDonatie(donatieCurenta);
     	        
     	        }
-    	        }
+    	       // }
     	        else if(action.equals("angajat")){
     	        	response.setContentType("text/html");
     	        	
