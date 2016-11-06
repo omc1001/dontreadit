@@ -23,6 +23,10 @@ public class CerereGrupa {
 		return cerere;
 	}
 	
+	public void setCerere(Cerere cerere) {
+		this.cerere = cerere;
+	}
+
 	public CerereGrupa() {
 		super();
 		

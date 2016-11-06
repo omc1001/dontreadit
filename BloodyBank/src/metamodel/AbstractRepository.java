@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 public abstract class AbstractRepository implements Tranzactii {
 	
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("$objectdb/db/bloodybank.odb");
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("$objectdb/db/BloodyBank.odb");
 	private static EntityManager em=emf.createEntityManager();
 	
 

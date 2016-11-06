@@ -9,6 +9,7 @@ import metamodel.BbRepository;
 import metamodel.BbRepositoryDefault;
 import entitati.Angajat;
 import entitati.Centru;
+import entitati.Cerere;
 import entitati.Donatie;
 import entitati.Donator;
 import entitati.Spital;
@@ -129,5 +130,11 @@ public class BbModel {
 	public List<Donator> ListaDonatori() {
 		// TODO Auto-generated method stub
 		return repo.ListaDonatori();
+	}
+
+
+	public Cerere addCerere(Cerere c) {
+		return repo.adaugaCerere(c);
+		
 	}
 }

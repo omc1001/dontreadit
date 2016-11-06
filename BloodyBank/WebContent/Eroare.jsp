@@ -9,7 +9,8 @@
 </head>
 <body>
 	<div class=langa>
-		A&#355;i introdus utilizatorul sau parola gre&#351;it.<br><br>
+	<img src="${pageContext.request.contextPath}/images/nope.png" width="40%" height="40%"><p>
+		<h2>A&#355;i introdus utilizatorul sau parola gre&#351;it.</h2><br><br>
 		<a href="Logare.jsp"><button type="button" class="button" name="index">&#206;napoi</button></a>
 		
 	</div>

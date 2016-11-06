@@ -37,11 +37,9 @@
   	<tr> 
   	<td><label>CNP: </label></td>
     <td><input type="text" name="CNP" id="CNP"></td>
-    <td><input type="image" name="buton" value="read" src="${pageContext.request.contextPath}/images/checksign.png" 
-    width="20px" height="20px" onClick="checkCNP()"></td></tr>
+    <td><input type="image" name="buton" value="verificare" src="${pageContext.request.contextPath}/images/checksign.png" 
+    width="20px" height="20px"></td></tr>
     
-    <tr>
-    <td><p id="cnp">Verificati dac&#259; suntei inresistrat deja</p></tr>
     
     <tr><td><label>Nume &#351;i prenume:</label></td>
     <td><input type="text" name="nume" value=${nume} ></td></tr>  
@@ -88,7 +86,7 @@
 </table>
 
 <br><br>
-<button type="submit" class="button" name="buton" value="create">Salveaz&#259;</button>&ensp;
+<a href="WEB-INF/Reusita.jsp"><button type="submit" class="button" name="buton" value="salvare">Salveaz&#259;</button></a>&ensp;
 <a href="index.jsp"><button type="button" class="button" name="anulare">Anuleaz&#259;</button></a>
 
 

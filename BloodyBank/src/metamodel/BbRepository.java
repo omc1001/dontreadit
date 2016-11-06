@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 
 import entitati.Angajat;
 import entitati.Centru;
+import entitati.Cerere;
 import entitati.Donatie;
 import entitati.Donator;
 import entitati.PersoanaContact;
@@ -46,6 +47,9 @@ public interface BbRepository extends Tranzactii{
 		public List<Donatie> ListaDonatiiByCentru(Centru c);
 		
 		public List<PersoanaContact> findPcBySpital(Spital s);
+		
+		public Cerere adaugaCerere(Cerere c);
+		public Cerere findCerereByCod(String cod);
 		
 		
 		

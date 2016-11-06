@@ -38,12 +38,12 @@
     <th>Data colectare</th>
     <th>Cantitate</th>
   </tr>
-  <%
+ <!--   <%
   	List<Donatie> donatii=(List<Donatie>)request.getAttribute("donatii");
   	for (Donatie d: donatii){
   		out.print("<tr><td>"+d.getDonator().getCnp().toString()+"</td><td>"+d.getDonator().getNume().toString()+"</td><td>"+d.getDataProgramata().toString()+"</td><td>"+d.getDataColectare().toString()+"</td><td>"+d.getCantitate().toString()+"</td></tr>");
   	}
-  %>
+  %>-->
   </table>
 	<div>
 	

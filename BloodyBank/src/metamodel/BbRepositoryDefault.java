@@ -28,11 +28,14 @@ import java.util.List;
 
 
 
+
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import entitati.Angajat;
 import entitati.Centru;
+import entitati.Cerere;
 import entitati.Donatie;
 import entitati.Donator;
 import entitati.PersoanaContact;
@@ -53,7 +56,7 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	public Donator findDonatorbyCNP(String cnp) {
 		
 		@SuppressWarnings("unchecked")
-		List<Donator> results = (List<Donator>) this.getEm().createQuery("Select d from Donator d where CNP=:cnp").setParameter("cnp", cnp).getResultList();
+		List<Donator> results = (List<Donator>) this.getEm().createQuery("Select d from entitati.Donator d where CNP=:cnp").setParameter("cnp", cnp).getResultList();
 		if(!results.isEmpty()){
 			return (Donator) results.get(0);
 		}
@@ -100,41 +103,41 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Donator> ListaDonatori() {
-		return this.getEm().createQuery("Select d from Donator d").getResultList();
+		return this.getEm().createQuery("Select d from entitati.Donator d").getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Centru> ListaCentre() {
-		 return (List<Centru>) this.getEm().createQuery("Select c from Centru c").getResultList();
+		 return (List<Centru>) this.getEm().createQuery("Select c from entitati.Centru c").getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Angajat> ListaAngajati(){
-		return (List<Angajat>) this.getEm().createQuery("Select a from Angajat a").getResultList();
+		return (List<Angajat>) this.getEm().createQuery("Select a from entitati.Angajat a").getResultList();
 	}
 
 	@Override
 	public Centru findCentruByNr(String numar) {
-		return (Centru) this.getEm().createQuery("Select c from Centru c where nrCentru=:numar").setParameter("numar", numar).getSingleResult();
+		return (Centru) this.getEm().createQuery("Select c from entitati.Centru c where nrCentru=:numar").setParameter("numar", numar).getSingleResult();
 	}
 	
 	@Override
 	public Centru findCentruByNume(String numar) {
-		return (Centru) this.getEm().createQuery("Select c from Centru c where numeCentru=:numar").setParameter("numar", numar).getSingleResult();
+		return (Centru) this.getEm().createQuery("Select c from entitati.Centru c where numeCentru=:numar").setParameter("numar", numar).getSingleResult();
 	}
 
 	@Override
 	public Angajat findAngajatByCnp(String cnp) {
 		@SuppressWarnings("unchecked")
-		List<Angajat> results = (List<Angajat>) this.getEm().createQuery("Select a from Angajat a where CNP=:cnp").setParameter("cnp", cnp).getResultList();
+		List<Angajat> results = (List<Angajat>) this.getEm().createQuery("Select a from entitati.Angajat a where CNP=:cnp").setParameter("cnp", cnp).getResultList();
 		if (!results.isEmpty()) return (Angajat) results.get(0);
 		else throw new IllegalArgumentException("nu");
 	}
 	@Override
 	public Utilizator autentificare(String user, String pass) {
 		@SuppressWarnings("unchecked")
-		List<Utilizator> rez=(List<Utilizator>)this.getEm().createQuery("Select u from Utilizator u where utilizator=:user and parola=:pass")
+		List<Utilizator> rez=(List<Utilizator>)this.getEm().createQuery("Select u from entitati.Utilizator u where utilizator=:user and parola=:pass")
     			.setParameter("user", user).setParameter("pass", pass).getResultList();
 		Utilizator u=rez.get(0);
 		return u;
@@ -143,7 +146,7 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	@Override
 	public Angajat findAngajatByUser(Utilizator user) {
 		@SuppressWarnings("unchecked")
-		List<Angajat> results = (List<Angajat>) this.getEm().createQuery("Select a from Angajat a where utilizator=:user").setParameter("user", user).getResultList();
+		List<Angajat> results = (List<Angajat>) this.getEm().createQuery("Select a from entitati.Angajat a where utilizator=:user").setParameter("user", user).getResultList();
 		if (!results.isEmpty()) return (Angajat) results.get(0);
 		else throw new IllegalArgumentException("nu");
 	}
@@ -167,7 +170,7 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	@Override
 	public Spital findSpitalByCif(String cif) {
 		@SuppressWarnings("unchecked")
-		List<Spital> results = (List<Spital>) this.getEm().createQuery("Select a from Spital a where CIF=:cif").setParameter("cif", cif).getResultList();
+		List<Spital> results = (List<Spital>) this.getEm().createQuery("Select a from entitati.Spital a where CIF=:cif").setParameter("cif", cif).getResultList();
 		if (!results.isEmpty()) return (Spital) results.get(0);
 		else throw new IllegalArgumentException("nu");
 	}
@@ -177,7 +180,7 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Donatie> ListaDonatii() {
-		return (List<Donatie>) this.getEm().createQuery("Select d from Donatie d").getResultList();
+		return (List<Donatie>) this.getEm().createQuery("Select d from entitati.Donatie d").getResultList();
 	}
 
 
@@ -185,7 +188,7 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Donatie> ListaDonatiiByCNP(String cnp) {
-		return (List<Donatie>) this.getEm().createQuery("Select d from Donatie d where donator=:don").
+		return (List<Donatie>) this.getEm().createQuery("Select d from entitati.Donatie d where donator=:don").
 				setParameter("don", this.findDonatorbyCNP(cnp)).getResultList();
 	}
 
@@ -194,7 +197,7 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Donatie> ListaDonatiiByData(Date data) {
-		 return (List<Donatie>) this.getEm().createQuery("Select d from Donatie d where dataColectare=:data").
+		 return (List<Donatie>) this.getEm().createQuery("Select d from entitati.Donatie d where dataColectare=:data").
 				setParameter("data", data).getResultList();
 	}
 
@@ -204,7 +207,7 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	@Override
 	public List<Donatie> ListaDonatiiByCentru(Centru c) {
 		
-		return (List<Donatie>) this.getEm().createQuery("Select d from Donatie d where centru=:centru").
+		return (List<Donatie>) this.getEm().createQuery("Select d from entitati.Donatie d where centru=:centru").
 				setParameter("centru", c).getResultList();
 	}
 
@@ -213,7 +216,7 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Spital> ListaSpitale() {
-		return this.getEm().createQuery("Select s from Spital s").getResultList();
+		return (List<Spital>) this.getEm().createQuery("Select s from entitati.Spital s").getResultList();
 	}
 
 
@@ -221,7 +224,26 @@ public  class BbRepositoryDefault  extends AbstractRepository implements BbRepos
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PersoanaContact> findPcBySpital(Spital s) {
-		return (List<PersoanaContact>)this.getEm().createQuery("Select pc from PersoanaContact pc where spital=:s").setParameter("s", s).getResultList();
+		return (List<PersoanaContact>)this.getEm().createQuery("Select pc from entitati.PersoanaContact pc where spital=:s").setParameter("s", s).getResultList();
+	}
+
+
+
+	@Override
+	public Cerere adaugaCerere(Cerere c) {
+		//if(findCerereByCod(c.getCod()).getClass().equals("Cerere")){
+//			return null;
+//		}
+//		else
+		 return (Cerere) this.create(c);
+	}
+
+
+
+	@Override
+	public Cerere findCerereByCod(String cod) {
+		return (Cerere) this.getEm().createQuery("Select from entitati.Cerere where cod=:cod").setParameter("cod", cod).getSingleResult();
+		
 	}
 	
 	

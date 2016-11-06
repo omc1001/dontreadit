@@ -32,8 +32,12 @@ public class LoginServlet extends HttpServlet {
 		        	return;
 	         		}
 				         else if (model.autentificare(user, pass).equalsIgnoreCase("master"))
-				        		{request.getRequestDispatcher("WEB-INF/FormAdmin.jsp").forward(request, response);       	
+				        		{
+				        	 request.getRequestDispatcher("WEB-INF/FormAdmin.jsp").forward(request, response);       	
 				        		}
+				         else if (model.autentificare(user, pass).equalsIgnoreCase("spital"))
+			        		{request.getRequestDispatcher("WEB-INF/FormSpital.jsp").forward(request, response);       	
+			        		}
 	        }
 	        else
 	        {

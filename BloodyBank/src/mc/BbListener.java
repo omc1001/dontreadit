@@ -10,7 +10,7 @@ public class BbListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent e) {
         com.objectdb.Enhancer.enhance("entitati.*");
         EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("$objectdb/db/bloodybank.odb");
+            Persistence.createEntityManagerFactory("$objectdb/db/BloodyBank.odb");
         e.getServletContext().setAttribute("emf", emf);
     }
  

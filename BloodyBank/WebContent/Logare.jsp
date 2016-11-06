@@ -15,7 +15,8 @@
         <form method="post" action="LoginServlet">        
         Utilizator:&nbsp;<input type="text" id="utilizator" name="utilizator"/><br/><br/>
         Parol&#259;:&nbsp;<input type="password" id="parola" name="parola" /><br/><br/>
-        <input type="submit" class="button" value="Logare" />
+        <input type="submit" class="button" value="Logare" />&ensp;
+        <a href="index.jsp"><button type="button" class="button" name="anulare">&#206;napoi</button></a>
         </form>
 </div>
 </body>

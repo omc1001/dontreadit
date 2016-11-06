@@ -22,7 +22,7 @@ public class Cerere {
 	private Boolean status;
 	@Column
 	private Date dataInreg;
-	@Column @OneToMany(cascade=CascadeType.PERSIST)@Embedded
+	@Column @OneToMany(cascade=CascadeType.ALL)
 	private List<CerereGrupa> linii= new ArrayList<CerereGrupa>();
 	
 	
